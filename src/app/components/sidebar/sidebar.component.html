@@ -1,0 +1,22 @@
+<app-navbar ></app-navbar>
+<div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
+    <div class="uk-offcanvas-bar">
+
+        <button class="uk-offcanvas-close" type="button" uk-toggle="target: #offcanvas-push" uk-close></button>
+
+        <ul class="uk-nav uk-nav-default">
+          <li routerLinkActive="uk-active" *ngFor="let menuItem of menuItems" class="nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">{{menuItem.title}}
+              </a> 
+              
+          </li>
+          <li> <a class="nav-link cursor" (click)="logout()">
+                  <i class="material-icons">power_settings_new</i>
+                  <p>Logout</p>
+              </a></li>
+      </ul>
+      
+
+
+    </div>
+</div>

@@ -7,7 +7,7 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
   { path: '/people', title: 'People' },
   { path: '/planets', title: 'Planets'},
-  { path: '/starships', title: 'starships'},
+  { path: '/starships', title: 'Starships'},
 ];
 @Component({
   selector: 'app-sidebar',

@@ -1,11 +1,17 @@
 <div class="wrapper">
   <div class="sidebar">
-      <app-sidebar></app-sidebar>
-      <div class="sidebar-background" ></div>
+    <app-sidebar></app-sidebar>
+    <div class="sidebar-background"></div>
   </div>
   <div class="uk-section uk-section-default">
-      <div class="uk-container">
-      <router-outlet></router-outlet>
+    <div class="uk-container">
+      <div class="uk-grid-match uk-child-width-expand@m" uk-grid>
+        <div>
+          <div class="uk-card uk-card-default uk-card-body">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>

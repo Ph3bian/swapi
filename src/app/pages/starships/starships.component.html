@@ -1,3 +1,7 @@
+<div *ngIf="!starships">
+  <app-spinner></app-spinner>
+ </div>
+ <div *ngIf="starships">
 <div class="uk-margin">
   <form class="uk-search uk-search-default">
     <span uk-search-icon></span>
@@ -38,3 +42,4 @@
   <li><a href="#">8</a></li>
   <li><a href="#"><span uk-pagination-next></span></a></li>
 </ul>
+</div>

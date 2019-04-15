@@ -1,3 +1,41 @@
-<p>
-  planets works!
-</p>
+<div class="uk-margin">
+    <form class="uk-search uk-search-default">
+        <span uk-search-icon></span>
+        <input class="uk-search-input" type="search" placeholder="Search...">
+    </form>
+</div>
+<table class="uk-table uk-table-divider">
+  <thead>
+    <tr>
+      <th>S/N</th>
+      <th>Name</th>
+      <th>Climate</th>
+      <th>Gender</th>
+      <th>Skin Color</th>
+      <th>Date Created</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of planets?.results, let i = index ">
+      <td> {{i+1}} </td>
+      <td>{{item.name}}</td>
+      <td>{{item.climate}}</td>
+      <td>{{item.diameter | number}}</td>
+      <td><span *ngIf="item.population> 0">{{item.population| number}}</span>
+        <span *ngIf="item.population ==='unknown'">{{item.population}}</span></td>
+      <td>{{item.created| date }}</td>
+      <td><button class="uk-button uk-button-default" type="button">View</button></td>
+    </tr>
+  </tbody>
+</table>
+<ul class="uk-pagination uk-flex-center" uk-margin>
+  <li><a href="#"><span uk-pagination-previous></span></a></li>
+  <li><a href="#">1</a></li>
+  <li class="uk-disabled"><span>...</span></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">6</a></li>
+  <li class="uk-active"><span>7</span></li>
+  <li><a href="#">8</a></li>
+  <li><a href="#"><span uk-pagination-next></span></a></li>
+</ul>

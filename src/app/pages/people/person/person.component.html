@@ -2,22 +2,33 @@
   <app-spinner></app-spinner>
 </div>
 <div *ngIf="person">
-  <a routerLink=".."> <span class="" uk-icon="icon:  arrow-left; ratio: 2"></span>Back</a>
-  <dl class="uk-description-list uk-description-list-divider">
-    <dt>Full Name</dt>
-    <dd>{{person.name}}</dd>
-    <dt>Gender</dt>
-    <dd>{{person.gender}}</dd>
-    <dt>Skin Color</dt>
-    <dd>{{person.skin_color}}</dd>
-    <dt>Hair Color</dt>
-    <dd>{{person.hair_color}}</dd>
-    <dt>Mass/Height</dt>
-    <dd>{{person.mass}}/{{person.height}}</dd>
-    <dt>Created At</dt>
-    <dd>{{person.created| date}}</dd>
-    <dt>Edited At</dt>
-    <dd>{{person.edited|date}}</dd>
-</dl>
+  <a class="primary-color" routerLink=".."> <span uk-icon="icon:  chevron-left; ratio: 1"></span>Back</a>
+  <div class="uk-child-width-1-2" uk-grid>
+    <div class="uk-width-1-3@m">
+      <div class="uk-flex uk-height-large  uk-margin uk-text-center">
+        <div class="uk-margin-auto uk-margin-auto-vertical ">
+          <img data-src="./assets/img/starwars.png" alt="person" uk-img>
+        </div>
+      </div>
+    </div>
+    <div class="uk-width-2-3@m ">
+      <dl class="uk-description-list uk-description-list-divider">
+        <dt>Full Name</dt>
+        <dd>{{person.name}}</dd>
+        <dt>Gender</dt>
+        <dd>{{person.gender}}</dd>
+        <dt>Skin Color</dt>
+        <dd>{{person.skin_color}}</dd>
+        <dt>Hair Color</dt>
+        <dd>{{person.hair_color}}</dd>
+        <dt>Mass/Height</dt>
+        <dd>{{person.mass}}/{{person.height}}</dd>
+        <dt>Created At</dt>
+        <dd>{{person.created| date}}</dd>
+        <dt>Edited At</dt>
+        <dd>{{person.edited|date}}</dd>
+      </dl>
+    </div>
+  </div>
 
 </div>

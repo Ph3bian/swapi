@@ -29,7 +29,7 @@
       <td><span *ngIf="item.population> 0">{{item.population| number}}</span>
         <span *ngIf="item.population ==='unknown'">{{item.population}}</span></td>
       <td>{{item.created| date }}</td>
-      <td><button class="uk-button uk-button-default primary-button" type="button">View</button></td>
+      <td><button class="uk-button uk-button-default primary-button" (click)="viewPlanet(item)" type="button">View</button></td>
     </tr>
   </tbody>
 </table>

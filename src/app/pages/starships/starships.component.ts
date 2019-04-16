@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StartshipsService } from './startships.service';
 import { MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-starships',
   templateUrl: './starships.component.html',
@@ -11,7 +12,7 @@ export class StarshipsComponent implements OnInit {
   starships: any;
   dataSource: MatTableDataSource<{}>;
 
-  constructor(private starshipService: StartshipsService) { }
+  constructor(private starshipService: StartshipsService, private router: Router) { }
   ngOnInit() {
     this.getStarships(this.pgNum);
   }
@@ -26,5 +27,10 @@ export class StarshipsComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     this.starships.results = this.dataSource.filteredData;
+  }
+  viewStarship = (starship) => {
+    this.starshipService.viewStarshipUrl = starship.url;
+    localStorage.setItem('currentStarship', starship.url);
+    this.router.navigate(['starships/starship'])
   }
 }

@@ -21,14 +21,14 @@ export class PeopleComponent implements OnInit {
   }
   getPeople(pgNum) {
     this.peopleservice.getPeopleList(pgNum).subscribe((response) => {
-      console.log(response);
       this.people = response;
       this.dataSource = new MatTableDataSource(response.results);
     })
   }
   viewPeople = (person) => {
     this.peopleservice.viewPersonUrl = person.url;
-    this.router.navigate([`people/${person.name}`])
+    localStorage.setItem('currentPerson', person.url);
+    this.router.navigate(['people/profile'])
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();

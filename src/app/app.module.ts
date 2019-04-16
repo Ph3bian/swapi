@@ -17,6 +17,8 @@ import { StartshipsService } from './pages/starships/startships.service';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { PersonComponent } from './pages/people/person/person.component';
+import { PlanetComponent } from './pages/planets/planet/planet.component';
+import { StarshipComponent } from './pages/starships/starship/starship.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { PersonComponent } from './pages/people/person/person.component';
     StarshipsComponent,
     PageNotFoundComponent,
     SpinnerComponent,
-    PersonComponent
+    PersonComponent,
+    PlanetComponent,
+    StarshipComponent
   ],
   imports: [
     BrowserModule,

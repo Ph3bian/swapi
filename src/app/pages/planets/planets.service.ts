@@ -7,10 +7,18 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PlanetsService {
+  viewPlanetUrl: string;
+  
   constructor(private http: HttpClient, private api: ApiService) { }
-
-
   getPlanetList(pgNum: number) {
     return this.http.get(this.api.planet(pgNum)).pipe(map((response: any) => response))
   }
+  getPlanetDetails() {
+    if (this.viewPlanetUrl) {
+      return this.http.get(this.viewPlanetUrl).pipe(map((response: any) => response));
+    } else {
+      this.viewPlanetUrl = localStorage.getItem('currentPlanet');
+    return this.http.get(this.viewPlanetUrl).pipe(map((response: any) => response));
+    }
+  };
 }

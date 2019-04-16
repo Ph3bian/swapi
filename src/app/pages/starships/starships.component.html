@@ -1,41 +1,43 @@
 <div *ngIf="loading">
   <app-spinner></app-spinner>
- </div>
- <div *ngIf="!loading">
-<div class="uk-margin">
-  <form class="uk-search uk-search-default">
-    <span uk-search-icon></span>
-    <input class="uk-search-input" (keyup)="applyFilter($event.target.value)"  type="search" placeholder="Search...">
-  </form>
 </div>
-<table class="uk-table uk-table-divider">
-  <thead>
-    <tr>
-      <th>S/N</th>
-      <th>Name</th>
-      <th>Model</th>
-       <th>Cargo capacity</th>
-      <th>Max speed</th>
-      <th>Date Created</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of starships?.results, let i = index ">
-      <td> {{i+1}} </td>
-      <td>{{item.name}}</td>
-      <td>{{item.model}}</td>
-       <td><span *ngIf="item.cargo_capacity > 0">{{item.cargo_capacity| number}}</span>
-        <span *ngIf="item.cargo_capacity ==='unknown'|| item.cargo_capacity ==0">{{item.cargo_capacity}}</span></td>
-      <td>{{item.max_atmosphering_speed}}</td>
-      <td>{{item.created| date }}</td>
-      <td><button class="uk-button uk-button-default primary-button" type="button" (click)="viewStarship(item)">View</button></td>
-    </tr>
-  </tbody>
-</table>
-<ul class="uk-pagination uk-flex-center" uk-margin>
-    <li><a *ngIf='starships?.previous !== null ? true : false' (click)="loadPrevious()"><span uk-pagination-previous></span></a></li>
+<div *ngIf="!loading" class="uk-overflow-auto">
+  <div class="uk-margin">
+    <form class="uk-search uk-search-default">
+      <span uk-search-icon></span>
+      <input class="uk-search-input" (keyup)="applyFilter($event.target.value)" type="search" placeholder="Search...">
+    </form>
+  </div>
+  <table class="uk-table uk-table-divider">
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>Name</th>
+        <th>Model</th>
+        <th>Cargo capacity</th>
+        <th>Max speed</th>
+        <th>Date Created</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of starships?.results, let i = index ">
+        <td> {{i+1}} </td>
+        <td>{{item.name}}</td>
+        <td>{{item.model}}</td>
+        <td><span *ngIf="item.cargo_capacity > 0">{{item.cargo_capacity| number}}</span>
+          <span *ngIf="item.cargo_capacity ==='unknown'|| item.cargo_capacity ==0">{{item.cargo_capacity}}</span></td>
+        <td>{{item.max_atmosphering_speed}}</td>
+        <td>{{item.created| date }}</td>
+        <td><button class="uk-button uk-button-default primary-button" type="button"
+            (click)="viewStarship(item)">View</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <ul class="uk-pagination uk-flex-center" uk-margin>
+    <li><a *ngIf='starships?.previous !== null ? true : false' (click)="loadPrevious()"><span
+          uk-pagination-previous></span></a></li>
     <li>Page {{pgNum}} of {{ totalPages}}</li>
-    <li><a   *ngIf='pgNum != totalPages' (click)="loadNext()"><span uk-pagination-next></span></a></li>
+    <li><a *ngIf='pgNum != totalPages' (click)="loadNext()"><span uk-pagination-next></span></a></li>
   </ul>
 </div>

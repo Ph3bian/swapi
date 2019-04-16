@@ -1,14 +1,14 @@
 <div *ngIf="loading">
   <app-spinner></app-spinner>
 </div>
-<div *ngIf="!loading">
+<div *ngIf="!loading" class="uk-overflow-auto">
   <div class="uk-margin">
     <form class="uk-search uk-search-default">
       <span uk-search-icon></span>
       <input class="uk-search-input" type="search" (keyup)="applyFilter($event.target.value)" placeholder="Search...">
     </form>
   </div>
-  <table class="uk-table  uk-table-divider ">
+  <table class="uk-table uk-table-divider">
     <thead>
       <tr>
         <th>S/N</th>
@@ -17,7 +17,6 @@
         <th>Gender</th>
         <th>Skin Color</th>
         <th>Date Created</th>
-        <!-- <th>Action</th> -->
       </tr>
     </thead>
     <tbody>

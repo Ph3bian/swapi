@@ -11,6 +11,8 @@ export class StarshipsComponent implements OnInit {
   pgNum: number = 1;
   starships: any;
   dataSource: MatTableDataSource<{}>;
+  totalPages: number;
+  itemsPerPage: number= 10;
 
   constructor(private starshipService: StartshipsService, private router: Router) { }
   ngOnInit() {
@@ -19,8 +21,8 @@ export class StarshipsComponent implements OnInit {
 
   getStarships(pgNum) {
     this.starshipService.getStarshipList(pgNum).subscribe((response) => {
-      console.log(response);
       this.starships = response;
+      this.totalPages= Math.floor(parseInt(response.count)/this.itemsPerPage);
       this.dataSource = new MatTableDataSource(response.results);
     })
   }

@@ -14,7 +14,7 @@
       <th>S/N</th>
       <th>Name</th>
       <th>Model</th>
-      <th>Passengers</th>
+       <th>Cargo capacity</th>
       <th>Max speed</th>
       <th>Date Created</th>
       <th></th>
@@ -25,8 +25,8 @@
       <td> {{i+1}} </td>
       <td>{{item.name}}</td>
       <td>{{item.model}}</td>
-      <td><span *ngIf="item.passengers > 0">{{item.passengers| number}}</span>
-        <span *ngIf="item.passengers ==='unknown'|| item.passengers ==0">{{item.passengers}}</span></td>
+       <td><span *ngIf="item.cargo_capacity > 0">{{item.cargo_capacity| number}}</span>
+        <span *ngIf="item.cargo_capacity ==='unknown'|| item.cargo_capacity ==0">{{item.cargo_capacity}}</span></td>
       <td>{{item.max_atmosphering_speed}}</td>
       <td>{{item.created| date }}</td>
       <td><button class="uk-button uk-button-default primary-button" type="button" (click)="viewStarship(item)">View</button></td>

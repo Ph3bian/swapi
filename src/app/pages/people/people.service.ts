@@ -7,9 +7,13 @@ import { map } from 'rxjs/operators';
 })
 export class PeopleService {
   constructor(private http: HttpClient, private api: ApiService) { }
+  viewPersonUrl = ''
 
-
-getPeopleList(pgNum:number) {
-  return this.http.get(this.api.people(pgNum)).pipe(map((response: any) => response))
-}
+  getPeopleList(pgNum: number) {
+    return this.http.get(this.api.people(pgNum)).pipe(map((response: any) => response));
+  };
+  getPersonDetails() {
+    console.log(this.viewPersonUrl, "url")
+    return this.http.get(this.viewPersonUrl).pipe(map((response: any) => response));
+  };
 }

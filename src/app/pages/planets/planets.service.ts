@@ -10,7 +10,7 @@ export class PlanetsService {
   constructor(private http: HttpClient, private api: ApiService) { }
 
 
-getPlanetList(pgNum:number) {
-  return this.http.get(this.api.planet(pgNum)).pipe(map((response: any) => response))
-}
+  getPlanetList(pgNum: number) {
+    return this.http.get(this.api.planet(pgNum)).pipe(map((response: any) => response))
+  }
 }

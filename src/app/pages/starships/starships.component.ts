@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StartshipsService } from './startships.service';
+import { MatTableDataSource } from '@angular/material';
 @Component({
   selector: 'app-starships',
   templateUrl: './starships.component.html',
@@ -8,16 +9,22 @@ import { StartshipsService } from './startships.service';
 export class StarshipsComponent implements OnInit {
   pgNum: number = 1;
   starships: any;
-  constructor(private starshipService: StartshipsService) { }
+  dataSource: MatTableDataSource<{}>;
 
+  constructor(private starshipService: StartshipsService) { }
   ngOnInit() {
     this.getStarships(this.pgNum);
   }
-  
+
   getStarships(pgNum) {
     this.starshipService.getStarshipList(pgNum).subscribe((response) => {
       console.log(response);
-      this.starships= response;
+      this.starships = response;
+      this.dataSource = new MatTableDataSource(response.results);
     })
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.starships.results = this.dataSource.filteredData;
   }
 }

@@ -5,7 +5,7 @@
 <div class="uk-margin">
   <form class="uk-search uk-search-default">
     <span uk-search-icon></span>
-    <input class="uk-search-input" type="search" placeholder="Search...">
+    <input class="uk-search-input" (keyup)="applyFilter($event.target.value)"  type="search" placeholder="Search...">
   </form>
 </div>
 <table class="uk-table uk-table-divider">
@@ -28,7 +28,7 @@
       <td>{{item.passengers| number}}</td>
       <td>{{item.max_atmosphering_speed}}</td>
       <td>{{item.created| date }}</td>
-      <td><button class="uk-button uk-button-default" type="button">View</button></td>
+      <td><button class="uk-button uk-button-default primary-button" type="button">View</button></td>
     </tr>
   </tbody>
 </table>

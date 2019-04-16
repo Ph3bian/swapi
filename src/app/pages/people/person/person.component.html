@@ -1,0 +1,23 @@
+<div *ngIf="!person">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="person">
+  <a routerLink=".."> <span class="" uk-icon="icon:  arrow-left; ratio: 2"></span>Back</a>
+  <dl class="uk-description-list uk-description-list-divider">
+    <dt>Full Name</dt>
+    <dd>{{person.name}}</dd>
+    <dt>Gender</dt>
+    <dd>{{person.gender}}</dd>
+    <dt>Skin Color</dt>
+    <dd>{{person.skin_color}}</dd>
+    <dt>Hair Color</dt>
+    <dd>{{person.hair_color}}</dd>
+    <dt>Mass/Height</dt>
+    <dd>{{person.mass}}/{{person.height}}</dd>
+    <dt>Created At</dt>
+    <dd>{{person.created| date}}</dd>
+    <dt>Edited At</dt>
+    <dd>{{person.edited|date}}</dd>
+</dl>
+
+</div>

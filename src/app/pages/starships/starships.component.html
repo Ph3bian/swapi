@@ -1,7 +1,7 @@
-<div *ngIf="!starships">
+<div *ngIf="loading">
   <app-spinner></app-spinner>
  </div>
- <div *ngIf="starships">
+ <div *ngIf="!loading">
 <div class="uk-margin">
   <form class="uk-search uk-search-default">
     <span uk-search-icon></span>
@@ -14,10 +14,10 @@
       <th>S/N</th>
       <th>Name</th>
       <th>Model</th>
-      <th>Gender</th>
-      <th>Skin Color</th>
+      <th>Passengers</th>
+      <th>Max speed</th>
       <th>Date Created</th>
-      <th>Action</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -25,7 +25,8 @@
       <td> {{i+1}} </td>
       <td>{{item.name}}</td>
       <td>{{item.model}}</td>
-      <td>{{item.passengers| number}}</td>
+      <td><span *ngIf="item.passengers > 0">{{item.passengers| number}}</span>
+        <span *ngIf="item.passengers ==='unknown'|| item.passengers ==0">{{item.passengers}}</span></td>
       <td>{{item.max_atmosphering_speed}}</td>
       <td>{{item.created| date }}</td>
       <td><button class="uk-button uk-button-default primary-button" type="button" (click)="viewStarship(item)">View</button></td>
@@ -33,8 +34,8 @@
   </tbody>
 </table>
 <ul class="uk-pagination uk-flex-center" uk-margin>
-    <li><a href="" (click)="loadPrevious()"><span uk-pagination-previous></span></a></li>
-    <li>Page 1 of {{ totalPages}}</li>
-    <li><a href="" (click)="loadNext()"><span uk-pagination-next></span></a></li>
+    <li><a *ngIf='starships?.previous !== null ? true : false' (click)="loadPrevious()"><span uk-pagination-previous></span></a></li>
+    <li>Page {{pgNum}} of {{ totalPages}}</li>
+    <li><a   *ngIf='pgNum != totalPages' (click)="loadNext()"><span uk-pagination-next></span></a></li>
   </ul>
 </div>

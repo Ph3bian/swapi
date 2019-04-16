@@ -1,11 +1,11 @@
-<div *ngIf="!people">
- <app-spinner></app-spinner>
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
 </div>
-<div *ngIf="people">
+<div *ngIf="!loading">
   <div class="uk-margin">
     <form class="uk-search uk-search-default">
       <span uk-search-icon></span>
-      <input class="uk-search-input" type="search" (keyup)="applyFilter($event.target.value)"  placeholder="Search...">
+      <input class="uk-search-input" type="search" (keyup)="applyFilter($event.target.value)" placeholder="Search...">
     </form>
   </div>
   <table class="uk-table  uk-table-divider ">
@@ -22,24 +22,20 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of people?.results, let i = index ">
-        <td> {{i+1}} </td>
+        <td> {{ (i+ 1) + (pgNum - 1) * itemsPerPage}} </td>
         <td>{{item.name}}</td>
         <td>{{item.birth_year}}</td>
         <td>{{item.gender}}</td>
         <td>{{item.skin_color}}</td>
         <td>{{item.created| date }}</td>
-        <td><button class="uk-button uk-button-default primary-button" type="button" (click)="viewPeople(item)">View</button></td>
+        <td><button class="uk-button uk-button-default primary-button" type="button"
+            (click)="viewPeople(item)">View</button></td>
       </tr>
     </tbody>
   </table>
   <ul class="uk-pagination uk-flex-center" uk-margin>
-    <li><a href="#"><span uk-pagination-previous></span></a></li>
-    <li><a href="#">1</a></li>
-    <li class="uk-disabled"><span>...</span></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">6</a></li>
-    <li class="uk-active"><span>7</span></li>
-    <li><a href="#">8</a></li>
-    <li><a href="#"><span uk-pagination-next></span></a></li>
+    <li><a *ngIf='people?.previous !== null ? true : false' (click)="loadPrevious()"><span uk-pagination-previous></span></a></li>
+    <li>Page {{pgNum}} of {{ totalPages}}</li>
+    <li><a   *ngIf='pgNum != totalPages' (click)="loadNext()"><span uk-pagination-next></span></a></li>
   </ul>
 </div>

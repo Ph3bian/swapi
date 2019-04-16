@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PlanetsService {
   viewPlanetUrl: string;
-  
   constructor(private http: HttpClient, private api: ApiService) { }
   getPlanetList(pgNum: number) {
     return this.http.get(this.api.planet(pgNum)).pipe(map((response: any) => response))

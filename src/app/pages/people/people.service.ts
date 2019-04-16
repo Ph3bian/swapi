@@ -10,7 +10,7 @@ export class PeopleService {
   constructor(private http: HttpClient, private api: ApiService) { }
   viewPersonUrl: string;
 
-  getPeopleList(pgNum: number) {
+  getPeopleList(pgNum:number) {
     return this.http.get(this.api.people(pgNum)).pipe(map((response: any) => response));
   };
   getPersonDetails() {
@@ -18,7 +18,7 @@ export class PeopleService {
       return this.http.get(this.viewPersonUrl).pipe(map((response: any) => response));
     } else {
       this.viewPersonUrl = localStorage.getItem('currentPerson');
-    return this.http.get(this.viewPersonUrl).pipe(map((response: any) => response));
+      return this.http.get(this.viewPersonUrl).pipe(map((response: any) => response));
     }
   };
 }

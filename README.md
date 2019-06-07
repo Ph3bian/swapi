@@ -1,5 +1,7 @@
 # Swapi
 
+All the Starwars details you'll need to know.
+
 ## Endpoints
 
 Built using endpoints from [SWAPI](https://swapi.co/)
